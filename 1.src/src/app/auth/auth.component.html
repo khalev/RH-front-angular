@@ -7,11 +7,11 @@
     <form>
       <div class="form-group">
         Login
-        <input type="text" class="form-control" #login />
+        <input type="text" class="form-control" #login required />
       </div>
       <div class="form-group">
-        Login
-        <input type="text" class="form-control" #mdp />
+        Password
+        <input type="password" class="form-control" #mdp required />
       </div>
       <div class="col-12">
         <button class="btn btn-primary" (click)="logIn(login.value, mdp.value)">
