@@ -1,26 +1,21 @@
-<div class="row">
-  <div style="height: 200px">&nbsp;</div>
-  <div class="col-sm-3"></div>
-  <div class="col-sm-6">
-    <!-- template driven forms -->
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-    <form>
-      <div class="form-group">
-        Login
-        <input type="text" class="form-control" #login required />
-      </div>
-      <div class="form-group">
-        Password
-        <input type="password" class="form-control" #mdp required />
-      </div>
-      <div class="col-12">
-        <button class="btn btn-primary" (click)="logIn(login.value, mdp.value)">
-          Se connecter
-        </button>
-      </div>
+    <!-- Icon -->
+    <div class="fadeIn first">
+    <br><br>{{message}}
+    
+    </div>
+     
+    <!-- Login Form -->
+    <form   >
+      <input type="text" id="login" class="fadeIn second" name="login" [(ngModel)]="user.login"  placeholder="login">
+      <input type="password" id="password" class="fadeIn third" name="password" [(ngModel)]="user.password"  placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In"  (click)="onLogin()" >
     </form>
 
-    <!-- reactive forms -->
-  </div>
-  <div class="col-sm-3"></div>
-</div>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>

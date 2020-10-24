@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PartageService } from '../services/partage.service';
+import { PartageService } from 'src/app/services/partage.service';
+
 
 @Component({
   selector: 'app-side-bar',

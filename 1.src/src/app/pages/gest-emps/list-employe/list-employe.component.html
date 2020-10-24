@@ -1,0 +1,68 @@
+<br><br>
+<div class="content-spacer">
+    <div class="card">
+    <div class="card-header bg-primary text-white">
+      Liste des employés
+    </div>
+      <div class="card-body">
+        <div class="form-inline">
+    
+        <input type="text" class="form-control" placeholder="Rechercher parmis les employés"  [(ngModel)]="motCle"/>
+        <button class="btn btn-primary" type="submit" (click)="onSubmitSearchEmployes()">Search </button>
+            
+         
+        <button class="btn btn-success" style="margin-left: 255px;" type="submit" (click)="onSubmitAddEmploye()"><b>+</b> Ajouter un employé </button>
+      </div>
+      <br>
+        <table class="table table-striped">
+        <thead>
+        <tr >
+          <th  [appSortEmp]="pageEmployes?.content"  data-order="desc"  data-name="id">ID</th>
+          <th [appSortEmp]="pageEmployes?.content"  data-order="desc"  data-name="prenom">Prénom</th>
+          <th [appSortEmp]="pageEmployes?.content"  data-order="desc"  data-name="nom">Nom</th>
+          <th [appSortEmp]="pageEmployes?.content"  data-order="desc"  data-name="dateNaissance" data-type="Date">Date de naissance</th>
+          <th [appSortEmp]="pageEmployes?.content"  data-order="desc"  data-name="heureAbs">Heures d'absence</th>
+          <th [appSortEmp]="pageEmployes?.content"  data-order="desc"  data-name="note">Note </th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+          <tbody>
+          <tr    *ngFor="let e of pageEmployes?.content">
+
+            <td *ngIf="e.heureAbs>20" appRed>{{e.id}}</td>
+            <td *ngIf="e.heureAbs<=20">{{e.id}}</td>
+
+           <td *ngIf="e.heureAbs>20" appRed>{{e.prenom}}</td>
+           <td *ngIf="e.heureAbs<=20">{{e.prenom}}</td>
+
+            <td *ngIf="e.heureAbs>20" appRed>{{e.nom}}</td>
+            <td *ngIf="e.heureAbs<=20">{{e.nom}}</td>
+
+            <td *ngIf="e.heureAbs>20" appRed>{{e.dateNaissance}}</td>
+            <td *ngIf="e.heureAbs<=20">{{e.dateNaissance}}</td>
+
+            <td *ngIf="e.heureAbs>20" appRed>{{e.heureAbs}}</td>
+            <td *ngIf="e.heureAbs<=20">{{e.heureAbs}}</td>
+            
+            <td *ngIf="e.heureAbs>20" appRed>{{e.note}}</td>
+            <td *ngIf="e.heureAbs<=20">{{e.note}}</td>
+           
+          <td><button class="btn btn-warning" (click)="onEditEmploye(e)">Modifier</button></td>
+            <td><button class="btn btn-danger" (click)="onDeleteEmploye(e)">Sumpprimer</button></td> 
+             
+    
+          </tr>
+          </tbody>
+        </table>
+        <div>
+            <ul *ngIf="pages" class="nav nav-pills ">
+                <li  class="nav-item"  *ngFor="let p of pages; let i= index">
+                  <a class="nav-link clickable" [ngClass]=" i ==pageCourante? 'active' : ''" (click)="goToPage(i)">{{i}}</a>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+

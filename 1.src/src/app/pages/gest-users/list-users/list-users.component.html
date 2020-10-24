@@ -1,0 +1,52 @@
+<br><br>
+<div class="content-spacer">
+    <div class="card">
+    <div class="card-header bg-primary text-white">
+      Liste des utilisateurs
+    </div>
+      <div class="card-body">
+        <div class="form-inline">
+    
+        <input type="text" class="form-control" placeholder="Rechercher parmis les utilisateurs" [(ngModel)]="motCle"/>
+        <button class="btn btn-primary" type="submit" (click)="onSubmitSearch()">Search </button>
+            
+         
+        <button class="btn btn-success" style="margin-left: 255px;" type="submit" (click)="onSubmitAddUser()"><b>+</b> Add User </button>
+      </div>
+      <br>
+        <table class="table table-striped">
+        <thead>
+        <tr>
+          <th [appSort]="pageUsers?.content"  data-order="desc"  data-name="id">ID</th>
+          <th [appSort]="pageUsers?.content"  data-order="desc"  data-name="login">Login</th>
+          <th [appSort]="pageUsers?.content"  data-order="desc"  data-name="prenom">Prenom</th>
+          <th [appSort]="pageUsers?.content"  data-order="desc"  data-name="nom">Nom</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+          <tbody>
+          <tr *ngFor="let u of pageUsers?.content"> <!--pageUsers?.content--usersList-->
+            <td>{{u.id}}</td>
+            <td>{{u.login}}</td>
+            <td>{{u.prenom}}</td>
+            <td>{{u.nom}}</td>
+           
+            <td><button class="btn btn-warning" (click)="onEditUser(u)">Modifier</button></td>
+            <td><button class="btn btn-danger" (click)="onDeleteUser(u)">Sumpprimer</button></td>
+             
+    
+          </tr>
+          </tbody>
+        </table>
+      
+        <div>
+            <ul *ngIf="pages" class="nav nav-pills ">
+                <li  class="nav-item"  *ngFor="let p of pages; let i= index">
+                  <a class="nav-link clickable" [ngClass]=" i ==pageCourante? 'active' : ''" (click)="goToPage(i)">{{i}}</a>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+    
